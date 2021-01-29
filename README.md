@@ -9,7 +9,13 @@ On the host:
 
     docker build -t opensphere-dev:latest .
     cd /path/to/opensphere-yarn-workspace
-    docker run -it --rm -v $(pwd):/yarn-workspace -w /yarn-workspace opensphere-dev
+    docker run -it --rm \
+      -e LOCAL_USER_ID=$(id -u $USER) \
+      -v $(pwd):/yarn-workspace \
+      -w /yarn-workspace \
+      opensphere-dev
+
+You should also consider mounting a docker volume or local folder as `/yarn-cache` so that the yarn cache is preserved between runs.
 
 Once in Docker:
 
