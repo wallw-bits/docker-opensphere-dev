@@ -25,3 +25,13 @@ Once in Docker:
     yarn test
 
 Note that this image does not currently serve the application, it only serves to run builds.
+
+## CI or Script Usage
+
+    docker run -it --rm \
+      -e LOCAL_USER_ID=$(id -u $USER) \
+      -v $(pwd):/yarn-workspace \
+      -w /yarn-workspace \
+      opensphere-dev \
+      'yarn install && yarn build && yarn test'
+
