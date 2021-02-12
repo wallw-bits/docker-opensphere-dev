@@ -24,4 +24,9 @@ su dev-user -c 'npm config set scripts-prepend-node-path true'
 # export chromium as CHROME_BIN so tests pick that change up
 echo 'export CHROME_BIN=$(which chromium)' >> /home/dev-user/.bashrc
 
-exec su dev-user "$@"
+if [ -z "$*" ]; then
+  exec su dev-user
+else
+  echo "command: $*"
+  exec su dev-user --command "$*"
+fi
