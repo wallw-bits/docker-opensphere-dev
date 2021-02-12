@@ -19,8 +19,9 @@ You should also consider mounting a docker volume or local folder as `/yarn-cach
 
 Once in Docker:
 
-    yarn upgrade
+    yarn install # the first time; subsequently 'yarn upgrade'
     cd workspace/opensphere
     yarn build
+    yarn test
 
 Note that this image does not currently serve the application, it only serves to run builds.
