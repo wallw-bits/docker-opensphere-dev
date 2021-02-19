@@ -7,13 +7,12 @@ This provides an environment to do OpenSphere builds through Docker.
 
 On the host:
 
-    docker build -t opensphere-dev:latest .
     cd /path/to/opensphere-yarn-workspace
     docker run -it --rm \
       -e LOCAL_USER_ID=$(id -u $USER) \
       -v $(pwd):/yarn-workspace \
       -w /yarn-workspace \
-      opensphere-dev
+      wallwbits/opensphere-dev
 
 You should also consider mounting a docker volume or local folder as `/yarn-cache` so that the yarn cache is preserved between runs.
 
@@ -32,6 +31,6 @@ Note that this image does not currently serve the application, it only serves to
       -e LOCAL_USER_ID=$(id -u $USER) \
       -v $(pwd):/yarn-workspace \
       -w /yarn-workspace \
-      opensphere-dev \
+      wallwbits/opensphere-dev \
       'yarn install && yarn build && yarn test'
 
